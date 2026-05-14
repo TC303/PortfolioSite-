@@ -1,34 +1,62 @@
 import React from 'react'
 
+const skills = [
+  { label: 'frontend', items: ['React', 'Tailwind CSS', 'TypeScript'] },
+  { label: 'backend', items: ['Java', 'Python', 'Node.js', 'Express'] },
+  { label: 'data', items: ['MongoDB', 'PostgreSQL', 'REST APIs'] },
+  { label: 'tooling', items: ['Git', 'Docker', 'Vite', 'CI/CD'] },
+]
+
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          About Me
-        </h2>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <p className="text-gray-500">Your Photo Here</p>
+    <section id="about" className="py-28 bg-void border-t border-amber-900/15">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <span className="section-label mb-3">// section_01</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#ddd0b8] tracking-tight">
+            about<span className="phosphor">.</span>
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-16 items-start">
+          {/* Photo placeholder */}
+          <div className="terminal-card p-1 aspect-square flex items-center justify-center relative">
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(120, 53, 15, 0.06) 0%, transparent 70%)',
+              }}
+            />
+            <div className="text-center relative z-10">
+              <p className="text-xs text-[#2e2820] mb-1 tracking-widest">// image_placeholder</p>
+              <p className="phosphor-dim text-xs tracking-wider">your_photo.jpg</p>
+            </div>
           </div>
+
+          {/* Text + skills */}
           <div>
-            <p className="text-lg text-gray-600 mb-4">
-              I'm a passionate developer with expertise in building modern web applications.
-              I love creating beautiful, functional, and user-friendly websites.
+            <p className="text-sm text-[#a89880] leading-7 mb-5">
+              Full Stack Developer focused on building scalable web applications with Java,
+              Python, React, and modern JavaScript/TypeScript frameworks. Experienced in
+              RESTful APIs, system architecture, secure coding practices, and performance
+              optimization.
             </p>
-            <p className="text-lg text-gray-600 mb-6">
-              With a strong foundation in both frontend and backend technologies,
-              I bring ideas to life through clean code and thoughtful design.
+            <p className="text-sm text-[#a89880] leading-7 mb-10">
+              Skilled in AI-assisted development workflows, testing, and delivering clean,
+              maintainable software solutions.
             </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-2">Frontend</h3>
-                <p className="text-gray-600">React, Tailwind CSS, JavaScript</p>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-gray-900 mb-2">Backend</h3>
-                <p className="text-gray-600">Node.js, Express, MongoDB</p>
-              </div>
+
+            <div className="space-y-3">
+              {skills.map((skill) => (
+                <div key={skill.label} className="terminal-card p-4 flex gap-4 items-start">
+                  <span className="phosphor-dim text-xs tracking-widest shrink-0 mt-0.5">
+                    {skill.label}:
+                  </span>
+                  <span className="text-xs text-[#a89880] leading-5">
+                    {skill.items.join(' · ')}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

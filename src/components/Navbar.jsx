@@ -2,27 +2,18 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className="fixed w-full bg-white shadow-md z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-gray-800">Portfolio</h1>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-blue-600 transition-colors">
-                Home
+    <nav className="fixed w-full z-50 border-b border-amber-900/20 bg-void/95 backdrop-blur-sm">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14">
+          <span className="text-sm phosphor tracking-wider">
+            &gt; todd_mizera<span className="cursor-blink">_</span>
+          </span>
+          <div className="hidden md:flex items-center gap-8">
+            {['home', 'about', 'projects', 'contact'].map((item) => (
+              <a key={item} href={`#${item}`} className="nav-link">
+                /{item}
               </a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">
-                About
-              </a>
-              <a href="#projects" className="text-gray-700 hover:text-blue-600 transition-colors">
-                Projects
-              </a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors">
-                Contact
-              </a>
-            </div>
+            ))}
           </div>
         </div>
       </div>
