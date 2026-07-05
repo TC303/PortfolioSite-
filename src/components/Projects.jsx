@@ -3,9 +3,10 @@ import React from 'react'
 const projects = [
   {
     id: '01',
-    title: 'project_one',
-    description: 'A full-stack web application built with React and Node.js featuring real-time data sync.',
-    tags: ['React', 'Node.js', 'MongoDB'],
+    title: 'REST-Task-Management',
+    description: 'A RESTful API for task management built with Spring Boot — clean architecture, JWT security, full CRUD, category/tag filtering, and Swagger docs.',
+    tags: ['Java', 'Spring Boot', 'PostgreSQL', 'REST API'],
+    url: 'https://github.com/TC303/REST-Task-Management',
   },
   {
     id: '02',
@@ -34,7 +35,7 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => (
-            <div key={project.id} className="terminal-card flex flex-col">
+            <div key={project.id} className="terminal-card flex flex-col" onClick={() => project.url && window.open(project.url, '_blank', 'noopener,noreferrer')} style={project.url ? { cursor: 'pointer' } : {}}>
               {/* Image area */}
               <div
                 className="h-40 flex items-center justify-center border-b border-amber-900/15 relative overflow-hidden"
