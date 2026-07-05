@@ -1,11 +1,29 @@
 import React, { useState } from 'react'
 
+const FORMSPREE_URL = 'https://formspree.io/f/xkolyrkp'
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState('idle') // idle | sending | success | error
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    setStatus('sending')
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   const handleChange = (e) => {
@@ -68,9 +86,20 @@ const Contact = () => {
             />
           </div>
 
-          <button type="submit" className="btn-phosphor-fill w-full text-center">
-            [send_message]
+          <button
+            type="submit"
+            disabled={status === 'sending' || status === 'success'}
+            className="btn-phosphor-fill w-full text-center disabled:opacity-50"
+          >
+            {status === 'sending' ? '[sending...]' : '[send_message]'}
           </button>
+
+          {status === 'success' && (
+            <p className="text-xs text-amber-400 tracking-wide">&gt; message_sent — I'll be in touch.</p>
+          )}
+          {status === 'error' && (
+            <p className="text-xs text-red-400 tracking-wide">&gt; error — please try again or email directly.</p>
+          )}
         </form>
       </div>
     </section>
