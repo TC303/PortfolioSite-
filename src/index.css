@@ -40,6 +40,15 @@
   ::-webkit-scrollbar-thumb { background: #92400e; }
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @layer components {
   .terminal-card {
     background: #080705;
