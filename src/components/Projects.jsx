@@ -7,6 +7,7 @@ const projects = [
     description: 'A RESTful API for task management built with Spring Boot — clean architecture, JWT security, full CRUD, category/tag filtering, and Swagger docs.',
     tags: ['Java', 'Spring Boot', 'PostgreSQL', 'REST API'],
     url: 'https://github.com/TC303/REST-Task-Management',
+    image: 'pexels-bibekghosh-14553705.jpg',
   },
   {
     id: '02',
@@ -14,6 +15,7 @@ const projects = [
     description: 'A movie recommendation engine comparing content-based and collaborative-filtering approaches on the MovieLens dataset, rigorously evaluated on a chronological train/test split and compared side-by-side in an interactive Streamlit app.',
     tags: ['Python', 'Streamlit', 'scikit-learn', 'Pandas'],
     url: 'https://github.com/TC303/Meida-recommendation-engine',
+    image: 'pexels-julian-bracero-233480546-12491688.jpg',
   },
   {
     id: '03',
@@ -167,9 +169,17 @@ const Projects = () => {
                   background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(120, 53, 15, 0.07) 0%, transparent 100%)',
                 }}
               >
-                <span className="text-xs text-[#2e2820] tracking-widest">
-                  // {project.id}.png
-                </span>
+                {project.image ? (
+                  <img
+                    src={`${import.meta.env.BASE_URL}${project.image}`}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-xs text-[#2e2820] tracking-widest">
+                    // {project.id}.png
+                  </span>
+                )}
               </div>
 
               {/* Content */}

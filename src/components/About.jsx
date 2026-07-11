@@ -19,18 +19,19 @@ const About = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-16 items-start">
-          {/* Photo placeholder */}
-          <div className="terminal-card p-1 aspect-square flex items-center justify-center relative">
+          {/* Photo */}
+          <div className="terminal-card p-1 aspect-square flex items-center justify-center relative overflow-hidden">
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: 'radial-gradient(ellipse 80% 80% at 50% 50%, rgba(120, 53, 15, 0.06) 0%, transparent 70%)',
               }}
             />
-            <div className="text-center relative z-10">
-              <p className="text-xs text-[#2e2820] mb-1 tracking-widest">// image_placeholder</p>
-              <p className="phosphor-dim text-xs tracking-wider">your_photo.jpg</p>
-            </div>
+            <img
+              src={`${import.meta.env.BASE_URL}Dramaticman.jpg`}
+              alt="Todd Mizera"
+              className="relative z-10 w-full h-full object-cover object-top"
+            />
           </div>
 
           {/* Text + skills */}
